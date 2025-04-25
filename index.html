@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Daily Mood Tracker</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+      background: linear-gradient(to bottom, #f8f9fa, #b6f2fa);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: #343a40;
+    }
+
+    .emoji-btn {
+      display: inline-flex;
+      justify-content: center;
+      font-size: 60px;
+      margin: 20px;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .emoji-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.35);
+    }
+
+    .footer-link {
+      margin-top: 40px;
+      font-size: 1.1rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes bounceDownUp {
+     0% { transform: translateY(0); }
+     30% { transform: translateY(120px); }
+     60% { transform: translateY(-20px); }
+     100% { transform: translateY(0); }
+    }
+
+    .animate-bounce {
+     animation: bounceDownUp 1s ease;
+    }
+        </style>
+    </head>
+
+    <script>
+        
+        window.addEventListener('DOMContentLoaded', () => {
+          const buttons = document.querySelectorAll('.emoji-btn');
+          buttons.forEach((btn, i) => {
+            setTimeout(() => {
+              btn.classList.add('animate-bounce');
+            }, i * 200); 
+          });
+        });
+      </script>
+      
+
+    <body class="text-center">
+        <h1>How do you feel today?</h1>
+        <form action="submit.php" method="post">
+            <button type="submit" name="mood" value="happy" class="btn btn-outline-success emoji-btn">😁</button>
+            <button type="submit" name="mood" value="neutral" class="btn btn-outline-secondary emoji-btn">😐</button>
+            <button type="submit" name="mood" value="sad" class="btn btn-outline-danger emoji-btn">😢</button>
+        </form>
+        <a href="history.php" class="footer-link">See mood history</a>
+    </body>
+</html>
